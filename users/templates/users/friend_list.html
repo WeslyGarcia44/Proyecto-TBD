@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}  <!-- Extiende tu plantilla base si tienes una -->
+
+{% block content %}
+  <h1>Lista de Amigos</h1>
+
+  {% if friends %}
+    <ul>
+      {% for friendship in friends %}
+        <li>{{ friendship.to_user.username }}</li>  <!-- Asumiendo que quieres listar los amigos -->
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No tienes amigos añadidos.</p>
+  {% endif %}
+{% endblock %}

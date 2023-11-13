@@ -1,0 +1,13 @@
+<!-- templates/registration/signup.html -->
+
+{% extends 'base_generic.html' %}  <!-- Asegúrate de extender tu base de plantillas si tienes una -->
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+  <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+{% endblock %}

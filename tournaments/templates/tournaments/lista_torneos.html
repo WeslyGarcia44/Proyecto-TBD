@@ -1,0 +1,15 @@
+<!-- tournaments/templates/tournaments/lista_torneos.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Lista de Torneos</h1>
+  {% for torneo in torneos %}
+    <div>
+      <h2>{{ torneo.nombre }}</h2>
+      <p>Fecha de inicio: {{ torneo.fecha_inicio }}</p>
+      <p>Premio: {{ torneo.premio }}</p>
+      <!-- Puedes añadir más detalles aquí -->
+    </div>
+  {% endfor %}
+{% endblock %}

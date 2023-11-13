@@ -1,0 +1,20 @@
+<!-- games/templates/games/user_game_list.html -->
+
+{% extends 'base_generic.html' %}  <!-- Asegúrate de que este extiende tu plantilla base si tienes una -->
+
+{% block content %}
+  <h1>Lista de Juegos de {{ user.username }}</h1>
+
+  {% if game_list %}
+    <ul>
+      {% for user_game in game_list %}
+        <li>
+          {{ user_game.game.title }} - Añadido el {{ user_game.added_at }}
+          <!-- Aquí puedes agregar más detalles o acciones, como eliminar un juego de la lista -->
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No has añadido juegos a tu lista aún.</p>
+  {% endif %}
+{% endblock %}
