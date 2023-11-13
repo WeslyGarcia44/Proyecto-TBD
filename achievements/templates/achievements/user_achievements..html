@@ -1,0 +1,15 @@
+<!-- achievements/templates/achievements/user_achievements.html -->
+
+{% extends 'base.html' %}  <!-- Reemplaza con tu plantilla base si tienes una -->
+
+{% block content %}
+  <h1>Tus Logros</h1>
+  {% for user_achievement in user_achievements %}
+    <div>
+      <h2>{{ user_achievement.achievement.name }}</h2>
+      <p>Obtenido el: {{ user_achievement.obtained_at }}</p>
+    </div>
+  {% empty %}
+    <p>Aún no has obtenido logros.</p>
+  {% endfor %}
+{% endblock %}

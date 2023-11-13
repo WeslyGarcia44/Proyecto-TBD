@@ -1,0 +1,16 @@
+<!-- achievements/templates/achievements/list_achievements.html -->
+
+{% extends 'base.html' %}  <!-- Reemplaza con tu plantilla base si tienes una -->
+
+{% block content %}
+  <h1>Logros</h1>
+  {% for achievement in achievements %}
+    <div>
+      <h2>{{ achievement.name }}</h2>
+      <p>{{ achievement.description }}</p>
+      {% if achievement.icon %}
+        <img src="{{ achievement.icon.url }}" alt="{{ achievement.name }}">
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

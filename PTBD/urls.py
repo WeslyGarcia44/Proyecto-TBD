@@ -9,5 +9,6 @@ urlpatterns = [
     path('users/', include('users.urls')),  # Incluye las URLs de la aplicación 'users'
     path('', views.home_view, name='home'),
     path('tournaments/', include('tournaments.urls')),
+    path('', include('achievements.urls')),
     # ... otras rutas de inclusión para tus aplicaciones ...
 ]
