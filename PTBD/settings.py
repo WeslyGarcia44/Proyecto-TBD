@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-=saa&#)wga-5a)j_weg7%x$=t_*r+kc!ek6!=#(j7h&ct2!r^r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.0.2.19 ', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
     'achievements',
+    'tenants'
 
 
 ]
@@ -127,3 +129,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

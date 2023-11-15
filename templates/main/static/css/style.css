@@ -1,0 +1,39 @@
+body {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    height: 100vh; /* Altura completa */
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.catalogo {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.item-catalogo {
+    margin-bottom: 20px;
+}
+
+.item-catalogo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item-catalogo h3 {
+    margin-top: 5px;
+}

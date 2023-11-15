@@ -16,3 +16,4 @@ def user_achievements(request, user_id):
 def test_view(request):
     # Lógica para la vista
     return HttpResponse("Esta es una vista de prueba.")
+# prueba de pull
