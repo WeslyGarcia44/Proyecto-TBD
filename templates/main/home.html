@@ -54,8 +54,8 @@
                                 <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="./anime-details.html">Games Details</a></li>
+                                        <li><a href="./anime-watching.html">Comunidades</a></li>
                                         <li><a href="./blog-details.html">Blog Details</a></li>
                                         <li><a href="./signup.html">Sign Up</a></li>
                                         <a href="{% url 'login' %}"><span class="icon_profile"></span>Login</a>
@@ -88,17 +88,17 @@
             <!-- Primer elemento del carrusel -->
             <div class="hero__items set-bg" data-setbg="{% static 'homepage/tournaments/midwestsmash.jpg' %}">
                 <!-- No hay contenido adicional aquí, solo la imagen de fondo -->
-
-                <!-- No hay contenido adicional aquí, solo la imagen de fondo -->
             </div>
 
             <!-- Segundo elemento del carrusel -->
             <div class="hero__items set-bg" data-setbg="{% static 'homepage/tournaments/evo.png' %}">
                 <!-- No hay contenido adicional aquí, solo la imagen de fondo -->
             </div>
-            </div>class="hero__items set-bg" data-setbg="{% static 'homepage/tournaments/lol.jpg' %}">
-            <!-- Tercer elemento del carrusel -->
 
+            <!-- Tercer elemento del carrusel -->
+            <div class="hero__items set-bg" data-setbg="{% static 'homepage/tournaments/lol.jpg' %}">
+                <!-- No hay contenido adicional aquí, solo la imagen de fondo -->
+            </div>
         </div>
     </div>
 </section>
@@ -133,10 +133,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
+                                            <li>Plataforma</li>
+                                            <li>2D</li>
                                         </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
+                                        <h5><a href="#">Super Mario Bros Wonder</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -149,10 +149,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
+                                            <li>Action</li>
+                                            <li>RPG</li>
                                         </ul>
-                                        <h5><a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien</a></h5>
+                                         <h5><a href="#">Starfield</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -165,10 +165,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
+                                            <li>Action</li>
+                                            <li>Adventure</li>
                                         </ul>
-                                        <h5><a href="#">Shingeki no Kyojin Season 3 Part 2</a></h5>
+                                        <h5><a href="#">Marvels: Spider-man 2</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -181,10 +181,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
+                                            <li>Action</li>
+                                            <li>Fighting</li>
                                         </ul>
-                                        <h5><a href="#">Fullmetal Alchemist: Brotherhood</a></h5>
+                                        <h5><a href="#">Mortal Kombat 1 (2023)</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -197,10 +197,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
+                                            <li>Action</li>
+                                            <li>FPS</li>
                                         </ul>
-                                        <h5><a href="#">Shiratorizawa Gakuen Koukou</a></h5>
+                                        <h5><a href="#">Call Of Duty: Modern Warfare III (2023)</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -213,10 +213,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
+                                            <li>Adventure</li>
+                                            <li>RPG</li>
                                         </ul>
-                                        <h5><a href="#">Code Geass: Hangyaku no Lelouch R2</a></h5>
+                                        <h5><a href="#">Super Mario RPG</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -563,7 +563,7 @@
                     <div class="product__sidebar">
                         <div class="product__sidebar__view">
                             <div class="section-title">
-                                <h5>Top Views</h5>
+                                <h5>News</h5>
                             </div>
                             <ul class="filter__controls">
                                 <li class="active" data-filter="*">Day</li>
@@ -573,16 +573,16 @@
                             </ul>
                             <div class="filter__gallery">
                                 <div class="product__sidebar__view__item set-bg mix day years"
-                                data-setbg="img/sidebar/tv-1.jpg">
+                                data-setbg="{% static 'homepage/News/gotys.jpg' %}">
                                 <div class="ep">18 / ?</div>
                                 <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Boruto: Naruto next generations</a></h5>
+                                <h5><a href="#">Todos los nominados de los GOTY 2023: lista completa de The Game Awards</a></h5>
                             </div>
                             <div class="product__sidebar__view__item set-bg mix month week"
-                            data-setbg="img/sidebar/tv-2.jpg">
+                            data-setbg="{% static 'homepage/News/fortnite-lewis-hamilton-skin.jpg' %}">
                             <div class="ep">18 / ?</div>
                             <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
+                            <h5><a href="#">Lewis Hamilton tendrá novedosa skin en Fortnite:</a></h5>
                         </div>
                         <div class="product__sidebar__view__item set-bg mix week years"
                         data-setbg="img/sidebar/tv-3.jpg">
