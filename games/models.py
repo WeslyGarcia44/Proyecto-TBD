@@ -1,7 +1,7 @@
 
 from django.conf import settings
 from django.db import models
-from tenants.models import Tenant  # Ajusta esta ruta según tu configuración
+from tenants.models import Tenant
 
 class GeneroVideojuego(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
@@ -40,7 +40,6 @@ class UserGameList(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     added_at = models.DateTimeField(auto_now_add=True)
-    # Campos adicionales como estado del juego pueden ser agregados aquí
 
     def __str__(self):
         return f"{self.user.username} - {self.game.title}"

@@ -11,7 +11,7 @@ def add_game_to_user_list(request, game_id):
     game = get_object_or_404(Game, id=game_id)
     user_game_list, created = UserGameList.objects.get_or_create(user=request.user, game=game)
     if created:
-        # Puedes añadir más lógica aquí si el juego fue añadido exitosamente
+
         pass
     return redirect('alguna_vista_para_ver_la_lista')  # Redirige a la vista donde el usuario puede ver su lista de juegos
 
