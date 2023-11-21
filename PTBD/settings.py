@@ -42,6 +42,15 @@ INSTALLED_APPS = [
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
     'achievements',
+    'Rank_User',
+    'Genre_Videogame',
+    'Game_Developer',
+    'Platform_Videogame',
+    'Review',
+    'Communities',
+    'Clans',
+    'Guides',
+
     'tenants'
 
 

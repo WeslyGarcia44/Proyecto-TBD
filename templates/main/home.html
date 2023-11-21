@@ -34,7 +34,12 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
+{% if tenant %}
+        <div style="background-color: yellow; text-align: center; padding: 10px;">
+            Usted está en el tenant: {{ tenant.name }}.
+            <!-- Puedes añadir más detalles aquí si es necesario -->
+        </div>
+    {% endif %}
     <!-- Header Section Begin -->
     <header class="header">
         <div class="container">
@@ -127,96 +132,78 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/mariowonder.jpg' %}>
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Plataforma</li>
                                             <li>2D</li>
                                         </ul>
-                                        <h5><a href="#">Super Mario Bros Wonder</a></h5>
+                                        <h5><a href="https://www.amazon.com.mx/Super-Mario-Wonder-Nintendo-Switch/dp/B0C93HKZ2T/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=16XM0QQ5JSR62&keywords=mario+wonder&qid=1700425039&sprefix=mario+wonder%2Caps%2C135&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47" target="_blank">Super Mario Bros Wonder</a></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/starfield.jpg' %}>
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Action</li>
                                             <li>RPG</li>
                                         </ul>
-                                         <h5><a href="#">Starfield</a></h5>
+                                         <h5><a href="https://www.amazon.com.mx/Bethesda-Starfield-Standard-Xbox-X/dp/B0C7RJ68QW/ref=sr_1_3?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2FO2XC3XWBJHS&keywords=starfield&qid=1700425120&sprefix=starfield%2Caps%2C136&sr=8-3&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47" target="_blank">Starfield</a></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/spiderman2.jpg' %}>
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Action</li>
                                             <li>Adventure</li>
                                         </ul>
-                                        <h5><a href="#">Marvels: Spider-man 2</a></h5>
+                                        <h5><a href=https://www.amazon.com.mx/Marvels-Spider-Man-Edici%C3%B3n-Est%C3%A1ndard-Standard/dp/B0C874TWN3/ref=sr_1_1?crid=D1Z31FYJICWX&keywords=spiderman%2B2%2Bps5&qid=1700425191&sprefix=spider%2Caps%2C197&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47&th=1" target="_blank">Marvels: Spider-man 2</a></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/mk1.jpg' %}>
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Action</li>
                                             <li>Fighting</li>
                                         </ul>
-                                        <h5><a href="#">Mortal Kombat 1 (2023)</a></h5>
+                                        <h5><a href="https://www.amazon.com.mx/Mortal-Kombat-Premium-Playstation-Games/dp/B0C5S12ZWB/ref=sr_1_4?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2UDQ17INPTPZ2&keywords=mk1&qid=1700425230&sprefix=mk1%2Caps%2C139&sr=8-4" target="_blank">Mortal Kombat 1 (2023)</a></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/mw3_.jpg' %}>
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Action</li>
                                             <li>FPS</li>
                                         </ul>
-                                        <h5><a href="#">Call Of Duty: Modern Warfare III (2023)</a></h5>
+                                        <h5><a href="https://www.amazon.com.mx/Call-Duty-Modern-Warfare-III/dp/B0CFTFG12B/ref=sr_1_4?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=20LNT6I3AG2F8&keywords=mw3&qid=1700425385&sprefix=mw%2Caps%2C148&sr=8-4&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47&th=1" target="_blank">Call Of Duty: Modern Warfare III (2023)</a></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/rpgmario.jpg' %}>
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Adventure</li>
                                             <li>RPG</li>
                                         </ul>
-                                        <h5><a href="#">Super Mario RPG</a></h5>
+                                        <h5><a href="https://www.amazon.com.mx/Super-Mario-para-Nintendo-Switch/dp/B0C933WNYW/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=IWN69TBXICN5&keywords=mario+rpg&qid=1700424997&sprefix=mario+rpg%2Caps%2C140&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47" target="_blank">Super Mario RPG</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -566,41 +553,28 @@
                                 <h5>News</h5>
                             </div>
                             <ul class="filter__controls">
-                                <li class="active" data-filter="*">Day</li>
-                                <li data-filter=".week">Week</li>
-                                <li data-filter=".month">Month</li>
-                                <li data-filter=".years">Years</li>
+
                             </ul>
                             <div class="filter__gallery">
                                 <div class="product__sidebar__view__item set-bg mix day years"
                                 data-setbg="{% static 'homepage/News/gotys.jpg' %}">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Todos los nominados de los GOTY 2023: lista completa de The Game Awards</a></h5>
+                               <h5><a href="https://thegameawards.com/"target="_blank">Todos los nominados de los GOTY 2023: lista completa de The Game Awards</a></h5>
                             </div>
                             <div class="product__sidebar__view__item set-bg mix month week"
                             data-setbg="{% static 'homepage/News/fortnite-lewis-hamilton-skin.jpg' %}">
-                            <div class="ep">18 / ?</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="#">Lewis Hamilton tendrá novedosa skin en Fortnite:</a></h5>
+                            <h5><a href="https://as.com/meristation/noticias/de-la-formula-1-a-fortnite-epic-games-anuncia-una-nueva-skin-de-lewis-hamilton-n/"target="_blank">Lewis Hamilton tendrá novedosa skin en Fortnite:</a></h5>
                         </div>
                         <div class="product__sidebar__view__item set-bg mix week years"
-                        data-setbg="img/sidebar/tv-3.jpg">
-                        <div class="ep">18 / ?</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        <h5><a href="#">Sword art online alicization war of underworld</a></h5>
+                        data-setbg="{% static 'homepage/News/the-last-of-us-parte-ii-remasterizado-202311188242029_14.jpg' %}">
+                        <h5><a href="https://vandal.elespanol.com/noticia/1350766957/the-last-of-us-part-2-remastered-ya-tiene-fecha-de-lanzamiento-y-su-primer-trailer/"target="_blank">The Last of Us Part 2 Remastered ya tiene fecha de lanzamiento y un primer tráiler</a></h5>
                     </div>
                     <div class="product__sidebar__view__item set-bg mix years month"
-                    data-setbg="img/sidebar/tv-4.jpg">
-                    <div class="ep">18 / ?</div>
-                    <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                    <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
+                    data-setbg="{% static 'homepage/News/educacion.jpg' %}">
+                    <h5><a href="https://www.infobae.com/inhouse/2023/11/17/como-se-forja-el-futuro-del-gaming-y-la-innovacion-tecnologica-a-traves-de-la-educacion/"target="_blank">Cómo se forja el futuro del gaming y la innovación tecnológica a través de la educación</a></h5>
                 </div>
                 <div class="product__sidebar__view__item set-bg mix day"
-                data-setbg="img/sidebar/tv-5.jpg">
-                <div class="ep">18 / ?</div>
-                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                <h5><a href="#">Fate stay night unlimited blade works</a></h5>
+                data-setbg="{% static 'homepage/News/Halo_Infinite_Cortana_AI_IA_Xbox.jpg' %}">
+                <h5><a href="https://www.levelup.com/articulos/764111/Xbox-y-la-inteligencia-artificial-arruinara-el-gaming-o-lo-revolucionara"target="_blank">Xbox y la inteligencia artificial, ¿arruinará el gaming o lo revolucionará?</a></h5>
             </div>
         </div>
     </div>
