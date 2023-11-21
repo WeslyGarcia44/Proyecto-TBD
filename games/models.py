@@ -39,7 +39,7 @@ class UserGameList(models.Model):
     # Añadido para multi-tenancy
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    added_at = models.DateTimeField(auto_now_add=True)
+    added_at = models.DateTimeField(auto_now_add=True) #
 
     def __str__(self):
         return f"{self.user.username} - {self.game.title}"
