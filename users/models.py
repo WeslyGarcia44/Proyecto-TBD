@@ -1,35 +1,31 @@
-
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from Rank_User.models import RangoUsuario
 
-class RangoUsuario(models.Model):
-    nombre = models.CharField(max_length=255)
-    nivel = models.IntegerField()
-
-    def __str__(self):
-        return f"{self.nombre} (Nivel {self.nivel})"
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=255)
     correo_electronico = models.EmailField(unique=True)
     contraseña = models.CharField(max_length=255)
-    rango_usuario = models.ForeignKey(RangoUsuario, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
+
 
 # Modelo para el perfil del usuario
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=500, blank=True)
     avatar = models.ImageField(upload_to='user_avatars/', null=True, blank=True)
+
     # Otros campos adicionales que quieras incluir
 
     def __str__(self):
         return self.user.username
+
 
 # Crear o actualizar el perfil del usuario automáticamente cada vez que se crea o actualiza un usuario.
 @receiver(post_save, sender=User)

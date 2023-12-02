@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,9 @@ SECRET_KEY = 'django-insecure-=saa&#)wga-5a)j_weg7%x$=t_*r+kc!ek6!=#(j7h&ct2!r^r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'tenant1.localhost', 'tenant2.localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.9', '192.168.1.8', 'tenant1.localhost', 'tenant2.localhost',
+                 'tenant3.localhost',
+                 'parra.localhost', '192.168.1.15', '192.168.1.10', '0.0.0.0']
 
 # Application definition
 
@@ -36,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Tus aplicaciones personalizadas
-    'users.apps.UsersConfig',
+
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
     'achievements',
@@ -48,8 +51,8 @@ INSTALLED_APPS = [
     'Communities',
     'Clans',
     'Guides',
-
-    'tenants'
+    'tenants',
+    'users',
 
 ]
 
@@ -77,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -141,3 +145,13 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuration for Django's messaging framework
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = ['users.backends.MyCustomBackend']
+
+# Add your own backend path in place of 'users.backends.MyCustomBackend'
