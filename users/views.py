@@ -1,6 +1,6 @@
 # users/views.py
 
-from .forms import UserProfileForm
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Friendship
 from django.contrib.auth.models import User
@@ -16,13 +16,10 @@ def signup_view(request):
         correo_electronico = request.POST.get('correo_electronico')
         contraseña = request.POST.get('contraseña')
 
-        # Aquí puedes añadir validaciones adicionales si es necesario
-
-        # Crear un nuevo usuario en tu modelo personalizado
-        usuario = Usuario(nombre=nombre, correo_electronico=correo_electronico, contraseña=contraseña)
+        usuario = Usuario(nombre=nombre, correo_electronico=correo_electronico)
+        usuario.set_password(contraseña)
         usuario.save()
 
-        # Redireccionar después del registro exitoso
         return redirect('home')
 
     return render(request, 'registration/signup.html')
@@ -74,8 +71,12 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
+            print("Inicio de sesión exitoso para:", nombre)  # Mensaje de éxito
             return redirect('home')
         else:
+            print("Inicio de sesión fallido para:", nombre)  # Mensaje de fallo
             messages.error(request, 'Nombre o contraseña incorrectos.')
 
     return render(request, 'registration/login.html')
+
+

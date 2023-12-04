@@ -14,7 +14,6 @@ urlpatterns = [
     path('tournaments/', include('tournaments.urls')),
     path('', include('achievements.urls')),
     path('login/', views.login_view, name='login'),
-    path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('tournaments/', views.tournaments_view, name='tournaments'),
     path('communities/', include('Communities.urls')),

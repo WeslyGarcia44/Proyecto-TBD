@@ -1,12 +1,11 @@
 from django.contrib.auth.backends import BaseBackend
-from .models import Usuario  # Asegúrate de importar tu modelo Usuario correctamente
-
+from .models import Usuario
 
 class MyCustomBackend(BaseBackend):
     def authenticate(self, request, nombre=None, password=None):
         try:
             usuario = Usuario.objects.get(nombre=nombre)
-            if usuario.contraseña == password:  # Verificación de contraseña
+            if usuario.check_password(password):  # Verificación segura de contraseña
                 return usuario
         except Usuario.DoesNotExist:
             return None

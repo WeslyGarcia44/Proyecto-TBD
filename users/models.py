@@ -1,48 +1,84 @@
-from django.conf import settings
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from Rank_User.models import RangoUsuario
 
+class MyUserManager(BaseUserManager):
+    def create_user(self, nombre, correo_electronico, password=None):
+        if not correo_electronico:
+            raise ValueError('Los usuarios deben tener una dirección de correo electrónico')
+        user = self.model(
+            nombre=nombre,
+            correo_electronico=self.normalize_email(correo_electronico),
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=255)
+    def create_superuser(self, nombre, correo_electronico, password):
+        user = self.create_user(
+            nombre=nombre,
+            correo_electronico=correo_electronico,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+class Usuario(AbstractBaseUser):
+    nombre = models.CharField(max_length=255, unique=True)
     correo_electronico = models.EmailField(unique=True)
-    contraseña = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    objects = MyUserManager()
+
+    USERNAME_FIELD = 'nombre'
+    REQUIRED_FIELDS = ['correo_electronico']
 
     def __str__(self):
         return self.nombre
 
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+    def create_superuser(self, nombre, correo_electronico, password):
+        user = self.create_user(
+            nombre=nombre,
+            correo_electronico=correo_electronico,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+
+
+
+
+
 
 # Modelo para el perfil del usuario
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    bio = models.TextField(max_length=500, blank=True)
-    avatar = models.ImageField(upload_to='user_avatars/', null=True, blank=True)
-
-    # Otros campos adicionales que quieras incluir
-
-    def __str__(self):
-        return self.user.username
 
 
 # Crear o actualizar el perfil del usuario automáticamente cada vez que se crea o actualiza un usuario.
-@receiver(post_save, sender=User)
-def create_or_update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-    instance.profile.save()
+
 
 
 class Friendship(models.Model):
-    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='friendships', on_delete=models.CASCADE)
-    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='friends', on_delete=models.CASCADE)
+    from_user = models.ForeignKey(Usuario, related_name='friendships', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(Usuario, related_name='friends', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # Esto asegura que no podamos tener múltiples instancias de amistad con los mismos usuarios
         unique_together = ('from_user', 'to_user')
 
     def __str__(self):
-        return f"{self.from_user.username} es amigo de {self.to_user.username}"
+        return f"{self.from_user.nombre} es amigo de {self.to_user.nombre}"
+
+
+# Aquí puedes incluir otros modelos si los necesitas
