@@ -3,8 +3,12 @@ from django.db import models
 
 class MyUserManager(BaseUserManager):
     def create_user(self, nombre, correo_electronico, password=None):
+        """
+        Crea y guarda un Usuario con el nombre, correo electrónico y contraseña dados.
+        """
         if not correo_electronico:
             raise ValueError('Los usuarios deben tener una dirección de correo electrónico')
+
         user = self.model(
             nombre=nombre,
             correo_electronico=self.normalize_email(correo_electronico),
@@ -14,6 +18,9 @@ class MyUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, nombre, correo_electronico, password):
+        """
+        Crea y guarda un superusuario con el nombre, correo electrónico y contraseña dados.
+        """
         user = self.create_user(
             nombre=nombre,
             correo_electronico=correo_electronico,
@@ -38,36 +45,20 @@ class Usuario(AbstractBaseUser):
         return self.nombre
 
     def has_perm(self, perm, obj=None):
+        "¿El usuario tiene un permiso específico?"
+        # El superusuario tiene todos los permisos por defecto.
         return True
 
     def has_module_perms(self, app_label):
+        "¿El usuario tiene permisos para ver la app `app_label`?"
+        # El superusuario ve todas las apps.
         return True
 
     @property
     def is_staff(self):
+        "¿El usuario es un miembro del staff?"
+        # Todos los administradores son miembros del staff
         return self.is_admin
-    def create_superuser(self, nombre, correo_electronico, password):
-        user = self.create_user(
-            nombre=nombre,
-            correo_electronico=correo_electronico,
-            password=password,
-        )
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
-
-
-
-
-
-
-
-# Modelo para el perfil del usuario
-
-
-# Crear o actualizar el perfil del usuario automáticamente cada vez que se crea o actualiza un usuario.
-
-
 
 class Friendship(models.Model):
     from_user = models.ForeignKey(Usuario, related_name='friendships', on_delete=models.CASCADE)
@@ -79,6 +70,3 @@ class Friendship(models.Model):
 
     def __str__(self):
         return f"{self.from_user.nombre} es amigo de {self.to_user.nombre}"
-
-
-# Aquí puedes incluir otros modelos si los necesitas

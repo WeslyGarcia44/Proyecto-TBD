@@ -4,7 +4,7 @@ from django.db import models
 from tenants.models import Tenant
 
 class GeneroVideojuego(models.Model):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
+   # tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
     nombre = models.CharField(max_length=255, primary_key=True)
     descripcion = models.TextField()
 
@@ -12,7 +12,7 @@ class GeneroVideojuego(models.Model):
         return self.nombre
 
 class Videojuego(models.Model):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
+    #tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
     # Añadido para multi-tenancy
     titulo = models.CharField(max_length=255)
     fecha_lanzamiento = models.DateField()
@@ -23,7 +23,7 @@ class Videojuego(models.Model):
         return self.titulo
 
 class Game(models.Model):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
+    #tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
     # Añadido para multi-tenancy
     title = models.CharField(max_length=255)
     release_date = models.DateField()
@@ -35,7 +35,7 @@ class Game(models.Model):
         return self.title
 
 class UserGameList(models.Model):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
+    #tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
     # Añadido para multi-tenancy
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)

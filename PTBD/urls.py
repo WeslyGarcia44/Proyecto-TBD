@@ -13,11 +13,14 @@ urlpatterns = [
     path('', views.home_view, name='home'),
     path('tournaments/', include('tournaments.urls')),
     path('', include('achievements.urls')),
-    path('login/', views.login_view, name='login'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    # path('login/', views.login_view, name='login'),
+    # path('accounts/', include('django.contrib.auth.urls')),
     path('tournaments/', views.tournaments_view, name='tournaments'),
     path('communities/', include('Communities.urls')),
+    path('games/', include('games.urls')),
 
+
+    # path('games/', views.Games_view, name='Games'),
 
     # ... otras rutas de inclusión para tus aplicaciones ...
 ]

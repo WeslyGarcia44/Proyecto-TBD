@@ -1,4 +1,6 @@
 from django.urls import path
+
+from . import views
 from .views import (
     login_view,
     send_friend_request,
@@ -15,5 +17,7 @@ urlpatterns = [
     path('signup/', signup_view, name='signup'),
     path('home/', home_view, name='home'),
     path('login/', login_view, name='login'),
+    path('perfil/', views.perfil_view, name='perfil'),
+    path('users/', views.user_list_view, name='list_friends'),
     # ... otras URLs de la aplicación 'users' si las hay ...
 ]

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Tus aplicaciones personalizadas
 
-    'games.apps.GamesConfig',
+
     'tournaments.apps.TournamentsConfig',
     'achievements',
     'Rank_User',
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'Guides',
     'tenants',
     'users',
+    'games',
 
 ]
 

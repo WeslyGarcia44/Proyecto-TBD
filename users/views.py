@@ -1,11 +1,5 @@
-# users/views.py
-
-
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Friendship
-from django.contrib.auth.models import User
-from .models import Usuario
-from django.shortcuts import render, redirect
+from .models import Usuario, Friendship
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
@@ -23,6 +17,9 @@ def signup_view(request):
         return redirect('home')
 
     return render(request, 'registration/signup.html')
+
+
+# El resto de tus vistas aquí, con los cambios recomendados
 
 
 def home_view(request):
@@ -72,7 +69,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             print("Inicio de sesión exitoso para:", nombre)  # Mensaje de éxito
-            return redirect('home')
+            return redirect('perfil')
         else:
             print("Inicio de sesión fallido para:", nombre)  # Mensaje de fallo
             messages.error(request, 'Nombre o contraseña incorrectos.')
@@ -80,3 +77,15 @@ def login_view(request):
     return render(request, 'registration/login.html')
 
 
+def perfil_view(request):
+    return render(request, 'registration/perfil.html')
+
+
+
+
+from users.models import Usuario
+
+
+def user_list_view(request):
+    users = Usuario.objects.all()  # Obtiene todos los usuarios
+    return render(request, 'registration/library/friends.html', {'users': users})
