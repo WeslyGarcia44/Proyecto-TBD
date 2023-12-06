@@ -10,7 +10,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
     <!-- Css Styles -->
     {% load static %}
@@ -22,86 +23,97 @@
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-
-    <!-- Custom Styles para mejorar la legibilidad -->
-    <style>
-        .friend-list li {
-            color: #ffffff; /* Asegúrate de que este color se vea bien con tu diseño */
-        }
-    </style>
 </head>
 <body>
-    <!-- Encabezado Personalizado -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="{% static 'img/logo.png' %}" alt="">
-                        </a>
-                    </div>
+<!-- Encabezado Personalizado -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a href="./index.html">
+                        <img src="{% static 'img/logo.png' %}" alt="">
+                    </a>
                 </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href= "{% url 'home' %}">Homepage</a></li>
-                                <li><a href="{% url 'Games_' %}">Games Library</a></li>
-                                <li><a href="{% url 'list_friends' %}">Users</a></li>
-                                <li><a href="{% url 'tournaments' %}">Tournaments</a></li>
-                                <li><a href="./communities.html">Communities</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="{% url 'home' %}">Homepage</a></li>
+                            <li><a href="{% url 'Games_' %}">Games Library</a></li>
+                            <li><a href="{% url 'list_friends' %}">Users</a></li>
+                            <li><a href="{% url 'tournaments' %}">Tournaments</a></li>
+                            <li><a href="./communities.html">Communities</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="./login.html"><span class="icon_profile"></span></a>
-                         <a href="{% url 'logout' %}" class="logout-button"><span class="icon_log-out"></span> Log Out</a>
-                    </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="header__right">
+                    <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                    <a href="./login.html"><span class="icon_profile"></span></a>
+                    <a href="{% url 'logout' %}" class="logout-button"><span class="icon_log-out"></span> Log Out</a>
                 </div>
             </div>
         </div>
-    </header>
-    <!-- Fin del Encabezado -->
+    </div>
+</header>
+<!-- Fin del Encabezado -->
 
-    <!-- Sección de Bienvenida (Sección de carga de avatar eliminada) -->
-    <section class="user-welcome spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12" style="text-align: center;">
-                    <h2 style="font-size: 36px; color: #f23007;">Bienvenido, {{ request.user.nombre }}</h2>
-                </div>
+<!-- Sección de Bienvenida -->
+<section class="user-welcome spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center;">
+                <h2 style="font-size: 36px; color: #f23007;">Bienvenido, {{ request.user.nombre }}</h2>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sección de Lista de Amigos -->
-    <section class="friend-list spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2 style="color: #04ff54;">Lista de Amigos</h2>
-                    </div>
-                    <div class="friends__content">
-                        <ul class="friend-list">
-                            {% for friend in friends %}
+<!-- Sección de Lista de Amigos -->
+<section class="friend-list spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2 style="color: #04ff54;">Friends List</h2>
+                </div>
+                <div class="friends__content">
+                    <ul class="friend-list">
+                        {% for friend in friends %}
                             <li>
-                                <span>{{ friend.nombre }}</span>
-                                <!-- Puedes añadir más detalles del amigo aquí -->
+                                 <span style="color: #ffffff;">{{ friend.nombre }}</span>
+
                             </li>
-                            {% empty %}
+                        {% empty %}
                             <li>No tienes amigos agregados aún.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Nueva Sección de Torneos Registrados -->
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2 style="color: #04ff54;">Registered Tournaments</h2>
+                </div>
+                <div class="tournaments__content">
+                    {% if nombres_torneos %}
+                        <ul>
+                            {% for nombre in nombres_torneos %}
+                                <li>{{ nombre_del_torneo }}</li>
                             {% endfor %}
                         </ul>
-                    </div>
+                    {% else %}
+                        <p>No estás registrado en torneos.</p>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Fin de la Sección de Lista de Amigos -->
+    </div>
+</section>
+<!-- Fin de la Sección de Torneos Registrados -->
 </body>
 </html>
