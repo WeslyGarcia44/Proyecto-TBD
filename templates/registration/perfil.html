@@ -6,7 +6,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Usuario | Página Principal</title>
+    <title>Users | Friends List</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +22,13 @@
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <!-- Custom Styles para mejorar la legibilidad -->
+    <style>
+        .friend-list li {
+            color: #ffffff; /* Asegúrate de que este color se vea bien con tu diseño */
+        }
+    </style>
 </head>
 <body>
     <!-- Encabezado Personalizado -->
@@ -39,9 +46,9 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li class="active"><a href= "{% url 'home' %}">Homepage</a></li>
                                 <li><a href="{% url 'Games_' %}">Games Library</a></li>
-                                <li><a href="{% url 'list_friends' %}">Amigos</a></li>
+                                <li><a href="{% url 'list_friends' %}">Users</a></li>
                                 <li><a href="{% url 'tournaments' %}">Tournaments</a></li>
                                 <li><a href="./communities.html">Communities</a></li>
                             </ul>
@@ -52,6 +59,7 @@
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
                         <a href="./login.html"><span class="icon_profile"></span></a>
+                         <a href="{% url 'logout' %}" class="logout-button"><span class="icon_log-out"></span> Log Out</a>
                     </div>
                 </div>
             </div>
@@ -59,45 +67,41 @@
     </header>
     <!-- Fin del Encabezado -->
 
-    <!-- Sección de Bienvenida -->
+    <!-- Sección de Bienvenida (Sección de carga de avatar eliminada) -->
     <section class="user-welcome spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" style="text-align: center;">
-                    <h2 style="font-size: 36px; color: #333366;">Bienvenido, {{ user.nombre }}</h2>
-                    <div style="margin-top: 20px;">
-                        <form action="#" method="post" enctype="multipart/form-data">
-                            <input type="file" name="avatar" id="avatar">
-                            <button type="submit" class="btn btn-primary">Subir Avatar</button>
-                        </form>
-                    </div>
+                    <h2 style="font-size: 36px; color: #f23007;">Bienvenido, {{ request.user.nombre }}</h2>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
+    <!-- Sección de Lista de Amigos -->
+    <section class="friend-list spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer__nav">
-                        <p style="text-align: center;">CONTINENTAL GAMING</p>
+                    <div class="section-title">
+                        <h2 style="color: #04ff54;">Lista de Amigos</h2>
+                    </div>
+                    <div class="friends__content">
+                        <ul class="friend-list">
+                            {% for friend in friends %}
+                            <li>
+                                <span>{{ friend.nombre }}</span>
+                                <!-- Puedes añadir más detalles del amigo aquí -->
+                            </li>
+                            {% empty %}
+                            <li>No tienes amigos agregados aún.</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- Footer Section End -->
-
-    <!-- Js Plugins -->
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/player.js' %}"></script>
-    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'js/mixitup.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    </section>
+    <!-- Fin de la Sección de Lista de Amigos -->
 </body>
 </html>

@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('games', '0003_game_tenant_generovideojuego_tenant_and_more'),
-        ('users', '0003_friendship'),
+
         ('Game_Developer', '0001_initial'),
     ]
 

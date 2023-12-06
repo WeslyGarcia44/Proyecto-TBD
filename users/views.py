@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Usuario, Friendship
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect
+from .models import Usuario, Friendship
+from django.contrib.auth import logout
 
 
 def signup_view(request):
@@ -81,11 +83,52 @@ def perfil_view(request):
     return render(request, 'registration/perfil.html')
 
 
-
-
 from users.models import Usuario
 
 
 def user_list_view(request):
     users = Usuario.objects.all()  # Obtiene todos los usuarios
     return render(request, 'registration/library/friends.html', {'users': users})
+
+
+from django.shortcuts import get_object_or_404, redirect
+from .models import Usuario, Friendship
+
+
+def add_friend(request, user_id):
+    to_user = get_object_or_404(Usuario, id=user_id)
+    from_user = request.user  # Usuario actualmente logueado
+    # Verifica que no exista ya una amistad y que no seas tú mismo
+    if from_user != to_user and not Friendship.objects.filter(from_user=from_user, to_user=to_user).exists():
+        Friendship.objects.create(from_user=from_user, to_user=to_user)
+    return redirect('list_friends')  # Redirige a alguna vista, por ejemplo, la lista de usuarios
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import Friendship
+
+User = get_user_model()
+
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+from .models import Friendship, Usuario
+@login_required
+def friends_list_view(request):
+    # Obtener las amistades donde el usuario actual es el 'from_user'
+    friendships = Friendship.objects.filter(from_user=request.user)
+
+    # Ahora, vamos a obtener los amigos (usuarios 'to_user') de esas instancias de Friendship
+    friends = [friendship.to_user for friendship in friendships]
+
+    context = {
+        'friends': friends,
+    }
+
+    return render(request, 'registration/perfil.html', context)
+
+def custom_logout(request):
+    logout(request)
+    return redirect('home')

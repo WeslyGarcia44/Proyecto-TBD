@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
+
 class MyUserManager(BaseUserManager):
     def create_user(self, nombre, correo_electronico, password=None):
         """
@@ -29,6 +30,7 @@ class MyUserManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
+
 
 class Usuario(AbstractBaseUser):
     nombre = models.CharField(max_length=255, unique=True)
@@ -60,9 +62,13 @@ class Usuario(AbstractBaseUser):
         # Todos los administradores son miembros del staff
         return self.is_admin
 
+
+from django.conf import settings
+
+
 class Friendship(models.Model):
-    from_user = models.ForeignKey(Usuario, related_name='friendships', on_delete=models.CASCADE)
-    to_user = models.ForeignKey(Usuario, related_name='friends', on_delete=models.CASCADE)
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='friendships', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='friends', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

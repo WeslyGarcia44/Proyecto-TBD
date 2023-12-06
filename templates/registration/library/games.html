@@ -10,7 +10,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
     <!-- Css Styles -->
     {% load static %}
@@ -25,79 +26,80 @@
 </head>
 <body>
 
-    <!-- Sección Central: Lista de Juegos -->
-    <section class="game-list spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Lista de Juegos</h2>
-                    </div>
-                    <div class="games__content">
-                        <table class="table" style="color: #f8f9fa;"> <!-- Color de texto claro -->
-                            <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Fecha de Lanzamiento</th>
-                                    <th>Género</th>
-                                    <th>Desarrollador</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for game in games %}
-                                <tr>
-                                    <td>{{ game.title }}</td>
-                                    <td>{{ game.release_date }}</td>
-                                    <td>{{ game.genre }}</td>
-                                    <td>{{ game.developer }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Botón para añadir juego -->
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="{% url 'Games_' %}" class="btn btn-primary">Añadir Juego</a>
-                    </div>
+<!-- Sección Central: Lista de Juegos -->
+<section class="game-list spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2 style="color: #f23007;">Game List</h2>
+
+                </div>
+                <div class="games__content">
+                    <table class="table" style="color: #f8f9fa;"> <!-- Color de texto claro -->
+                        <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Fecha de Lanzamiento</th>
+                            <th>Género</th>
+                            <th>Desarrollador</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for game in games %}
+                            <tr>
+                                <td>{{ game.title }}</td>
+                                <td>{{ game.release_date }}</td>
+                                <td>{{ game.genre }}</td>
+                                <td>{{ game.developer }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Botón para añadir juego -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="{% url 'Games_' %}" class="btn btn-primary">Añadir Juego</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Fin de la Sección Central -->
+    </div>
+</section>
+<!-- Fin de la Sección Central -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <!-- Espacio vacío para alineación -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li><a href="./index.html">Homepage</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <!-- Espacio vacío para alineación -->
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="page-up">
+        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- Espacio vacío para alineación -->
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    <ul>
+                        <<li><a href="{% url 'perfil' %}">Profile</a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="col-lg-3">
+                <!-- Espacio vacío para alineación -->
+            </div>
         </div>
-    </footer>
-    <!-- Footer Section End -->
+    </div>
+</footer>
+<!-- Footer Section End -->
 
-    <!-- Js Plugins -->
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/player.js' %}"></script>
-    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'js/mixitup.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+<!-- Js Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/player.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

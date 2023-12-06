@@ -17,7 +17,11 @@ urlpatterns = [
     path('signup/', signup_view, name='signup'),
     path('home/', home_view, name='home'),
     path('login/', login_view, name='login'),
-    path('perfil/', views.perfil_view, name='perfil'),
     path('users/', views.user_list_view, name='list_friends'),
+    path('add-friend/<int:user_id>/', views.add_friend, name='add-friend'),
+    path('friends/', views.friends_list_view, name='friends-list'),
+    path('perfil/', views.friends_list_view, name='perfil'),
+    path('logout/', views.custom_logout, name='logout'),
+
     # ... otras URLs de la aplicación 'users' si las hay ...
 ]

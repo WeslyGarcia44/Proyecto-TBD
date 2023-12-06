@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Continental Gaming>
+    <meta name="description" content="Continental Gaming">
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,84 +11,62 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
+          rel="stylesheet">
 
     <!-- Css Styles -->
-
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/plyr.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/plyr.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
-
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-{% if tenant %}
-        <div style="background-color: yellow; text-align: center; padding: 10px;">
-            Usted está en el tenant: {{ tenant.name }}.
-            <!-- Puedes añadir más detalles aquí si es necesario -->
-        </div>
-    {% endif %}
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="{% static 'homepage/continental.jpg' %}" alt="Descripción">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Games Details</a></li>
-                                       <li><a href="{% url 'c' %}">Communities</a></li>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
 
-                                        <li><a href="{% url 'tournaments' %}">Tournaments</a></li>
-
-                                        <li><a href="./signup.html">Sign Up</a></li>
-                                        <a href="{% url 'login' %}"><span class="icon_profile"></span>Login</a>
-
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                     <a href="{% url 'login' %}"><span class="icon_profile"></span>Login</a>
-
-                    </div>
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a href="./index.html">
+                        <img src="{% static 'homepage/continental.jpg' %}" alt="Descripción">
+                    </a>
                 </div>
             </div>
-            <div id="mobile-menu-wrap"></div>
+            <div class="col-lg-8">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Homepage</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="header__right">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'perfil' %}"><span class="icon_profile"></span>Profile</a>
+                    {% else %}
+                        <a href="{% url 'login' %}"><span class="icon_profile"></span>Login</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </header>
-    <!-- Header End -->
+        <div id="mobile-menu-wrap"></div>
+    </div>
+</header>
+<!-- Header End -->
 
-    <!-- Hero Section Begin -->
-   <section class="hero">
+<!-- Hero Section Begin -->
+<section class="hero">
     <div class="container">
         <div class="hero__slider owl-carousel">
             <!-- Primer elemento del carrusel -->
@@ -109,538 +86,172 @@
         </div>
     </div>
 </section>
+<!-- Hero Section End -->
 
-    <!-- Hero Section End -->
-
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="trending__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Trending Now</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/mariowonder.jpg' %}>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Plataforma</li>
-                                            <li>2D</li>
-                                        </ul>
-                                        <h5><a href="https://www.amazon.com.mx/Super-Mario-Wonder-Nintendo-Switch/dp/B0C93HKZ2T/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=16XM0QQ5JSR62&keywords=mario+wonder&qid=1700425039&sprefix=mario+wonder%2Caps%2C135&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47" target="_blank">Super Mario Bros Wonder</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/starfield.jpg' %}>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Action</li>
-                                            <li>RPG</li>
-                                        </ul>
-                                         <h5><a href="https://www.amazon.com.mx/Bethesda-Starfield-Standard-Xbox-X/dp/B0C7RJ68QW/ref=sr_1_3?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2FO2XC3XWBJHS&keywords=starfield&qid=1700425120&sprefix=starfield%2Caps%2C136&sr=8-3&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47" target="_blank">Starfield</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/spiderman2.jpg' %}>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Action</li>
-                                            <li>Adventure</li>
-                                        </ul>
-                                        <h5><a href=https://www.amazon.com.mx/Marvels-Spider-Man-Edici%C3%B3n-Est%C3%A1ndard-Standard/dp/B0C874TWN3/ref=sr_1_1?crid=D1Z31FYJICWX&keywords=spiderman%2B2%2Bps5&qid=1700425191&sprefix=spider%2Caps%2C197&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47&th=1" target="_blank">Marvels: Spider-man 2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/mk1.jpg' %}>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Action</li>
-                                            <li>Fighting</li>
-                                        </ul>
-                                        <h5><a href="https://www.amazon.com.mx/Mortal-Kombat-Premium-Playstation-Games/dp/B0C5S12ZWB/ref=sr_1_4?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2UDQ17INPTPZ2&keywords=mk1&qid=1700425230&sprefix=mk1%2Caps%2C139&sr=8-4" target="_blank">Mortal Kombat 1 (2023)</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/mw3_.jpg' %}>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Action</li>
-                                            <li>FPS</li>
-                                        </ul>
-                                        <h5><a href="https://www.amazon.com.mx/Call-Duty-Modern-Warfare-III/dp/B0CFTFG12B/ref=sr_1_4?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=20LNT6I3AG2F8&keywords=mw3&qid=1700425385&sprefix=mw%2Caps%2C148&sr=8-4&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47&th=1" target="_blank">Call Of Duty: Modern Warfare III (2023)</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg={% static 'homepage/trending/rpgmario.jpg' %}>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Adventure</li>
-                                            <li>RPG</li>
-                                        </ul>
-                                        <h5><a href="https://www.amazon.com.mx/Super-Mario-para-Nintendo-Switch/dp/B0C933WNYW/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=IWN69TBXICN5&keywords=mario+rpg&qid=1700424997&sprefix=mario+rpg%2Caps%2C140&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47" target="_blank">Super Mario RPG</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Popular FPS Games</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-1.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Sen to Chihiro no Kamikakushi</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-2.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-3.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-4.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Rurouni Kenshin: Meiji Kenkaku Romantan</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-5.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-6.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="recent__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Recently Added Shows</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-1.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Great Teacher Onizuka</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-2.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Fate/stay night Movie: Heaven's Feel - II. Lost</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-3.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-4.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Fate/Zero 2nd Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/codmw3.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Kizumonogatari II: Nekket su-hen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-6.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="live__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Live Action</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/live/live-1.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shouwa Genroku Rakugo Shinjuu</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/live/live-2.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/live/live-3.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/live/live-4.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/live/live-5.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Fate/stay night Movie: Heaven's Feel - II. Lost</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/live/live-6.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Kizumonogatari II: Nekketsu-hen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="product__sidebar">
-                        <div class="product__sidebar__view">
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="trending__product">
+                    <div class="row">
+                        <div class="col-lg-8">
                             <div class="section-title">
-                                <h5>News</h5>
+                                <h4>Trending Now</h4>
                             </div>
-                            <ul class="filter__controls">
-
-                            </ul>
-                            <div class="filter__gallery">
-                                <div class="product__sidebar__view__item set-bg mix day years"
-                                data-setbg="{% static 'homepage/News/gotys.jpg' %}">
-                               <h5><a href="https://thegameawards.com/" target="_blank">Todos los nominados de los GOTY 2023: lista completa de The Game Awards</a></h5>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="btn__all">
+                                <a href="#" class="primary-btn"><span class="arrow_right"></span></a>
                             </div>
-                            <div class="product__sidebar__view__item set-bg mix month week"
-                            data-setbg="{% static 'homepage/News/fortnite-lewis-hamilton-skin.jpg' %}">
-                            <h5><a href="https://as.com/meristation/noticias/de-la-formula-1-a-fortnite-epic-games-anuncia-una-nueva-skin-de-lewis-hamilton-n/"target="_blank">Lewis Hamilton tendrá novedosa skin en Fortnite:</a></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg={% static 'homepage/trending/mariowonder.jpg' %}>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Plataforma</li>
+                                        <li>2D</li>
+                                    </ul>
+                                    <h5>
+                                        <a href="https://www.amazon.com.mx/Super-Mario-Wonder-Nintendo-Switch/dp/B0C93HKZ2T/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=16XM0QQ5JSR62&keywords=mario+wonder&qid=1700425039&sprefix=mario+wonder%2Caps%2C135&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47"
+                                           target="_blank">Super Mario Bros Wonder</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg={% static 'homepage/trending/starfield.jpg' %}>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Action</li>
+                                        <li>RPG</li>
+                                    </ul>
+                                    <h5>
+                                        <a href="https://www.amazon.com.mx/Bethesda-Starfield-Standard-Xbox-X/dp/B0C7RJ68QW/ref=sr_1_3?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2FO2XC3XWBJHS&keywords=starfield&qid=1700425120&sprefix=starfield%2Caps%2C136&sr=8-3&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47"
+                                           target="_blank">Starfield</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg={% static 'homepage/trending/spiderman2.jpg' %}>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Action</li>
+                                        <li>Adventure</li>
+                                    </ul>
+                                    <h5>
+                                        <a href=https://www.amazon.com.mx/Marvels-Spider-Man-Edici%C3%B3n-Est%C3%A1ndard-Standard/dp/B0C874TWN3/ref=sr_1_1?crid=D1Z31FYJICWX&keywords=spiderman%2B2%2Bps5&qid=1700425191&sprefix=spider%2Caps%2C197&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47&th=1"
+                                           target="_blank">Marvels: Spider-man 2</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg={% static 'homepage/trending/mk1.jpg' %}>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Action</li>
+                                        <li>Fighting</li>
+                                    </ul>
+                                    <h5>
+                                        <a href="https://www.amazon.com.mx/Mortal-Kombat-Premium-Playstation-Games/dp/B0C5S12ZWB/ref=sr_1_4?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2UDQ17INPTPZ2&keywords=mk1&qid=1700425230&sprefix=mk1%2Caps%2C139&sr=8-4"
+                                           target="_blank">Mortal Kombat 1 (2023)</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg={% static 'homepage/trending/mw3_.jpg' %}>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Action</li>
+                                        <li>FPS</li>
+                                    </ul>
+                                    <h5>
+                                        <a href="https://www.amazon.com.mx/Call-Duty-Modern-Warfare-III/dp/B0CFTFG12B/ref=sr_1_4?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=20LNT6I3AG2F8&keywords=mw3&qid=1700425385&sprefix=mw%2Caps%2C148&sr=8-4&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47&th=1"
+                                           target="_blank">Call Of Duty: Modern Warfare III (2023)</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg={% static 'homepage/trending/rpgmario.jpg' %}>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Adventure</li>
+                                        <li>RPG</li>
+                                    </ul>
+                                    <h5>
+                                        <a href="https://www.amazon.com.mx/Super-Mario-para-Nintendo-Switch/dp/B0C933WNYW/ref=sr_1_1?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=IWN69TBXICN5&keywords=mario+rpg&qid=1700424997&sprefix=mario+rpg%2Caps%2C140&sr=8-1&ufe=app_do%3Aamzn1.fos.4e545b5e-1d45-498b-8193-a253464ffa47"
+                                           target="_blank">Super Mario RPG</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Aquí se añaden los productos en tendencia -->
+            </div>
+        </div>
+        <div class="col-lg-11">
+            <div class="product__sidebar">
+                <div class="product__sidebar__view">
+                    <div class="section-title">
+                        <h5>News</h5>
+                    </div>
+                    <div class="filter__gallery">
+                        <div class="product__sidebar__view__item set-bg mix day years"
+                             data-setbg="{% static 'homepage/News/gotys.jpg' %}">
+                            <h5><a href="https://thegameawards.com/" target="_blank">Todos los nominados de los GOTY
+                                2023: lista completa de The Game Awards</a></h5>
+                        </div>
+                        <div class="product__sidebar__view__item set-bg mix month week"
+                             data-setbg="{% static 'homepage/News/fortnite-lewis-hamilton-skin.jpg' %}">
+                            <h5>
+                                <a href="https://as.com/meristation/noticias/de-la-formula-1-a-fortnite-epic-games-anuncia-una-nueva-skin-de-lewis-hamilton-n/"
+                                   target="_blank">Lewis Hamilton tendrá novedosa skin en Fortnite</a></h5>
                         </div>
                         <div class="product__sidebar__view__item set-bg mix week years"
-                        data-setbg="{% static 'homepage/News/the-last-of-us-parte-ii-remasterizado-202311188242029_14.jpg' %}">
-                        <h5><a href="https://vandal.elespanol.com/noticia/1350766957/the-last-of-us-part-2-remastered-ya-tiene-fecha-de-lanzamiento-y-su-primer-trailer/"target="_blank">The Last of Us Part 2 Remastered ya tiene fecha de lanzamiento y un primer tráiler</a></h5>
+                             data-setbg="{% static 'homepage/News/the-last-of-us-parte-ii-remasterizado-202311188242029_14.jpg' %}">
+                            <h5>
+                                <a href="https://vandal.elespanol.com/noticia/1350766957/the-last-of-us-part-2-remastered-ya-tiene-fecha-de-lanzamiento-y-su-primer-trailer/"
+                                   target="_blank">The Last of Us Part 2 Remastered ya tiene fecha de lanzamiento y
+                                    un primer tráiler</a></h5>
+                        </div>
+                        <div class="product__sidebar__view__item set-bg mix years month"
+                             data-setbg="{% static 'homepage/News/educacion.jpg' %}">
+                            <h5>
+                                <a href="https://www.infobae.com/inhouse/2023/11/17/como-se-forja-el-futuro-del-gaming-y-la-innovacion-tecnologica-a-traves-de-la-educacion/"
+                                   target="_blank">Cómo se forja el futuro del gaming y la innovación tecnológica a
+                                    través de la educación</a></h5>
+                        </div>
+                        <div class="product__sidebar__view__item set-bg mix day"
+                             data-setbg="{% static 'homepage/News/Halo_Infinite_Cortana_AI_IA_Xbox.jpg' %}">
+                            <h5>
+                                <a href="https://www.levelup.com/articulos/764111/Xbox-y-la-inteligencia-artificial-arruinara-el-gaming-o-lo-revolucionara"
+                                   target="_blank">Xbox y la inteligencia artificial, ¿arruinará el gaming o lo
+                                    revolucionará?</a></h5>
+                        </div>
                     </div>
-                    <div class="product__sidebar__view__item set-bg mix years month"
-                    data-setbg="{% static 'homepage/News/educacion.jpg' %}">
-                    <h5><a href="https://www.infobae.com/inhouse/2023/11/17/como-se-forja-el-futuro-del-gaming-y-la-innovacion-tecnologica-a-traves-de-la-educacion/"target="_blank">Cómo se forja el futuro del gaming y la innovación tecnológica a través de la educación</a></h5>
                 </div>
-                <div class="product__sidebar__view__item set-bg mix day"
-                data-setbg="{% static 'homepage/News/Halo_Infinite_Cortana_AI_IA_Xbox.jpg' %}">
-                <h5><a href="https://www.levelup.com/articulos/764111/Xbox-y-la-inteligencia-artificial-arruinara-el-gaming-o-lo-revolucionara"target="_blank">Xbox y la inteligencia artificial, ¿arruinará el gaming o lo revolucionará?</a></h5>
             </div>
         </div>
     </div>
-    <div class="product__sidebar__comment">
-        <div class="section-title">
-            <h5>New Comment</h5>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-1.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-2.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-3.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-4.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
     </div>
-</div>
-</div>
-</div>
-</div>
 </section>
 <!-- Product Section End -->
 
@@ -653,32 +264,26 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li class="active"><a href="./index.html">Homepage</a></li>
-                        <li><a href="./categories.html">Categories</a></li>
-                        <li><a href="./blog.html">Our Blog</a></li>
-                        <li><a href="#">Contacts</a></li>
+                        <li class="active"><a href="./index.html"></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
 
-              </div>
-          </div>
-      </div>
-  </footer>
-  <!-- Footer Section End -->
-
-  <!-- Search model Begin -->
-  <div class="search-model">
+<!-- Search Model Begin -->
+<div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch"><i class="icon_close"></i></div>
         <form class="search-model-form">
@@ -686,11 +291,9 @@
         </form>
     </div>
 </div>
-<!-- Search model end -->
+<!-- Search Model End -->
 
 <!-- Js Plugins -->
-
-{% load static %}
 <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/player.js' %}"></script>
@@ -699,7 +302,6 @@
 <script src="{% static 'js/jquery.slicknav.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-
 
 
 </body>

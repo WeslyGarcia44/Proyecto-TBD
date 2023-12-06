@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.db import models
 
 # Create your models here.
 # tournaments/models.py
@@ -12,6 +14,8 @@ class Torneo(models.Model):
     fecha_inicio = models.DateField()
     premio = models.TextField()
 
+    class Inscripcion(models.Model):
+        usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
